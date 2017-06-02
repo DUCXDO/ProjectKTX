@@ -8,7 +8,12 @@ namespace DAO
 {
     public interface IHopDongDAO
     {
+
         HOPDONG themHD(HOPDONG hd);
+        HOPDONG ThemHD(HOPDONG hd);
+        HOPDONG XoaHD(HOPDONG hd);
+        IEnumerable<HOPDONG> TimTatCaHD();
+        IEnumerable<HOPDONG> TimHD(HOPDONG hd);
     }
 
     public class HopDongDAO : IHopDongDAO
@@ -20,7 +25,7 @@ namespace DAO
                 // khai báo và khởi tạo đối tượng kết nối với database
                 KTXEntities KTXe = new KTXEntities();
                 //Thêm mới 
-                SINHVIEN result = KTXe.SINHVIENs.Add(sv);
+                HOPDONG result = KTXe.HOPDONGs.Add(hd);
                 //Lưu thay đổi
                 KTXe.SaveChanges();
                 //trả về đối tượng mới thêm để xác định kết quả
@@ -33,13 +38,13 @@ namespace DAO
             }
         }
 
-        public SINHVIEN XoaSV(SINHVIEN sv)
+        public HOPDONG XoaHD(HOPDONG hd)
         {
             try
             {
                 KTXEntities KTXe = new KTXEntities();
-                SINHVIEN delete = KTXe.SINHVIENs.Find(sv.MaSV);
-                SINHVIEN result = KTXe.SINHVIENs.Remove(delete);
+                HOPDONG delete = KTXe.HOPDONGs.Find(hd.MaSV);
+                HOPDONG result = KTXe.HOPDONGs.Remove(delete);
                 return result;
             }
             catch (Exception e)
@@ -48,35 +53,13 @@ namespace DAO
             }
         }
 
-        public SINHVIEN SuaSV(SINHVIEN sv)
-        {
-            try
-            {
-                KTXEntities KTXe = new KTXEntities();
-                SINHVIEN edit = KTXe.SINHVIENs.Find(sv);
-                edit.NgaySinh = sv.NgaySinh;
-                edit.SoCMND = sv.SoCMND;
-                edit.SoDT = sv.SoDT;
-                edit.TenSV = sv.TenSV;
-                edit.DiaChi = sv.DiaChi;
-                int result = KTXe.SaveChanges();
-                if (result == 1)
-                { return edit; }
-                else
-                { return null; }
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
 
-        public IEnumerable<SINHVIEN> TimTatCaSV()
+        public IEnumerable<HOPDONG> TimTatCaHD()
         {
             try
             {
                 KTXEntities KTXe = new KTXEntities();
-                IEnumerable<SINHVIEN> result = KTXe.SINHVIENs.AsEnumerable();
+                IEnumerable<HOPDONG> result = KTXe.HOPDONGs.AsEnumerable();
                 return result;
             }
             catch (Exception e)
@@ -85,16 +68,17 @@ namespace DAO
             }
         }
 
-        public IEnumerable<SINHVIEN> TimSV(SINHVIEN sv)
+
+        public IEnumerable<HOPDONG> TimHD(HOPDONG hd)
         {
             try
             {
                 KTXEntities KTXe = new KTXEntities();
-                IEnumerable<SINHVIEN> result = KTXe.SINHVIENs.AsQueryable().Where(x =>
-                (sv.MaSV == null || x.MaSV == sv.MaSV) &&
-                (sv.NgaySinh == null || x.NgaySinh == sv.NgaySinh) &&
-                (sv.SoCMND == 0) || (x.SoCMND == sv.SoCMND) &&
-                (sv.SoDT == null) || (x.SoDT == sv.SoDT));
+                IEnumerable<HOPDONG> result = KTXe.HOPDONGs.AsQueryable().Where(x =>
+                (hd.MaSV == null || x.MaSV == hd.MaSV) &&
+                (hd.SoHD == null || x.SoHD == hd.SoHD) &&
+                (hd.MaPhong == null) || (x.MaPhong == hd.MaPhong) &&
+                (hd.NgayLap == null) || (x.NgayLap == hd.NgayLap));
                 return result;
             }
             catch (Exception e)

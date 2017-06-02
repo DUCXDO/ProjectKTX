@@ -1,0 +1,8 @@
+C:\Users\ducvu\Desktop\Project KTX\ProjectKTX\ProjectKTX\bin\Debug\ProjectKTX.exe.config
+C:\Users\ducvu\Desktop\Project KTX\ProjectKTX\ProjectKTX\bin\Debug\ProjectKTX.exe
+C:\Users\ducvu\Desktop\Project KTX\ProjectKTX\ProjectKTX\bin\Debug\ProjectKTX.pdb
+C:\Users\ducvu\Desktop\Project KTX\ProjectKTX\ProjectKTX\obj\Debug\ProjectKTX.Form1.resources
+C:\Users\ducvu\Desktop\Project KTX\ProjectKTX\ProjectKTX\obj\Debug\ProjectKTX.Properties.Resources.resources
+C:\Users\ducvu\Desktop\Project KTX\ProjectKTX\ProjectKTX\obj\Debug\ProjectKTX.csproj.GenerateResource.Cache
+C:\Users\ducvu\Desktop\Project KTX\ProjectKTX\ProjectKTX\obj\Debug\ProjectKTX.exe
+C:\Users\ducvu\Desktop\Project KTX\ProjectKTX\ProjectKTX\obj\Debug\ProjectKTX.pdb

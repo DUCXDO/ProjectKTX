@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SinhVienDAO.cs" />
-    <Compile Include="Class2.cs" />
+    <Compile Include="PhongDAO.cs" />
     <Compile Include="DataAcess.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

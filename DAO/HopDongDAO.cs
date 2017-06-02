@@ -6,25 +6,24 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public interface IPhongDAO
+    public interface IHopDongDAO
     {
-        PHONG ThemP(PHONG p);
-        PHONG XoaP(PHONG p);
-        PHONG SuaP(PHONG p);
-        IEnumerable<PHONG> TimTatCaP();
-        IEnumerable<PHONG> TimP(PHONG p);
+        HOPDONG ThemHD(HOPDONG hd);
+        HOPDONG XoaHD(HOPDONG hd);
+        IEnumerable<HOPDONG> TimTatCaHD();
+        IEnumerable<HOPDONG> TimHD(HOPDONG hd);
     }
 
-    public class PhongDAO : IPhongDAO
+    public class HopDongDAO : IHopDongDAO
     {
-        public PHONG ThemP(PHONG p)
+        public HOPDONG ThemHD(HOPDONG hd)
         {
             try
             {
                 // khai báo và khởi tạo đối tượng kết nối với database
                 KTXEntities KTXe = new KTXEntities();
                 //Thêm mới 
-                PHONG result = KTXe.PHONGs.Add(p);
+                HOPDONG result = KTXe.HOPDONGs.Add(hd);
                 //Lưu thay đổi
                 KTXe.SaveChanges();
                 //trả về đối tượng mới thêm để xác định kết quả
@@ -37,13 +36,13 @@ namespace DAO
             }
         }
 
-        public PHONG XoaP(PHONG p)
+        public HOPDONG XoaHD(HOPDONG hd)
         {
             try
             {
                 KTXEntities KTXe = new KTXEntities();
-                PHONG delete = KTXe.PHONGs.Find(p.MaPhong);
-                PHONG result = KTXe.PHONGs.Remove(delete);
+                HOPDONG delete = KTXe.HOPDONGs.Find(hd.MaSV);
+                HOPDONG result = KTXe.HOPDONGs.Remove(delete);
                 return result;
             }
             catch (Exception e)
@@ -52,32 +51,12 @@ namespace DAO
             }
         }
 
-        public PHONG SuaP(PHONG p)
+        public IEnumerable<HOPDONG> TimTatCaHD()
         {
             try
             {
                 KTXEntities KTXe = new KTXEntities();
-                PHONG edit = KTXe.PHONGs.Find(p);
-                edit.SoNguoiTD = p.SoNguoiTD;
-                edit.ViTriP = p.ViTriP;
-                int result = KTXe.SaveChanges();
-                if (result == 1)
-                { return edit; }
-                else
-                { return null; }
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
-        public IEnumerable<PHONG> TimTatCaP()
-        {
-            try
-            {
-                KTXEntities KTXe = new KTXEntities();
-                IEnumerable<PHONG> result = KTXe.PHONGs.AsEnumerable();
+                IEnumerable<HOPDONG> result = KTXe.HOPDONGs.AsEnumerable();
                 return result;
             }
             catch (Exception e)
@@ -86,13 +65,16 @@ namespace DAO
             }
         }
 
-        public IEnumerable<PHONG> TimP(PHONG p)
+        public IEnumerable<HOPDONG> TimHD(HOPDONG hd)
         {
             try
             {
                 KTXEntities KTXe = new KTXEntities();
-                IEnumerable<PHONG> result = KTXe.PHONGs.AsQueryable().Where(x =>
-                (p.MaPhong == null || x.MaPhong == p.MaPhong));
+                IEnumerable<HOPDONG> result = KTXe.HOPDONGs.AsQueryable().Where(x =>
+                (hd.MaSV == null || x.MaSV == hd.MaSV) &&
+                (hd.SoHD == null || x.SoHD == hd.SoHD) &&
+                (hd.MaPhong == null) || (x.MaPhong == hd.MaPhong) &&
+                (hd.NgayLap == null) || (x.NgayLap == hd.NgayLap));
                 return result;
             }
             catch (Exception e)

@@ -13,6 +13,7 @@ namespace DAO
         SINHVIEN SuaSV(SINHVIEN sv);
         IEnumerable<SINHVIEN> TimSV(SINHVIEN sv);
         IEnumerable<SINHVIEN> TimTatCaSV();
+        SINHVIEN TimSVTheoMaSV(String maSV);
     }
 
     public class SinhVienDAO : ISinhVienDAO
@@ -84,6 +85,20 @@ namespace DAO
                 return result;
             }
             catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public SINHVIEN TimSVTheoMaSV(String maSV)
+        {
+            try
+            {
+                KTXEntities KTXe = new KTXEntities();
+                SINHVIEN result = KTXe.SINHVIENs.SingleOrDefault(x => x.MaSV == maSV);
+                return result;
+            }
+            catch(Exception e)
             {
                 return null;
             }

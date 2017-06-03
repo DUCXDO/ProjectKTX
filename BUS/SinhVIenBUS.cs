@@ -4,87 +4,85 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAO;
+using System.ComponentModel.DataAnnotations;
 
 namespace BUS
 {
     public class SinhVIenBUS
     {
-        private ISinhVienDAO _sv = new SinhVienDAO();
-        public ISinhVienDAO sv;
-       
-        public SinhVIenBUS()
+        private readonly ISinhVienDAO _sv;
+        private readonly IPhongDAO _p;
+
+        public SinhVIenBUS(ISinhVienDAO sv, IPhongDAO p)
         {
-            sv = _sv;
+            _sv = sv;
+            _p = p;
         }
 
-        public String ThemSV(String maSV, String tenSV, DateTime ngaySinh, int soCMND, String soDT, String diaChi)
+        //Hàm check cái thành phần hợp lệ
+        public String kiemTraSinhVien(SINHVIEN sv)
         {
-            try
+            var validationContext = new ValidationContext(sv, null, null);
+            var validationResults = new List<ValidationResult>();
+
+            var isValid = Validator.TryValidateObject(sv, validationContext, validationResults);
+               
+            if(isValid == true)
             {
-                if(maSV == null)
+                return null;
+            }
+            else
+            {
+                String result = String.Empty;
+                foreach(var r in validationResults)
                 {
-                    return "Mã sinh viên không được để trống!";
+                    result += r.ErrorMessage + "\n";
                 }
-                else if(tenSV == null)
+                return result;
+            }
+        }
+
+        //Hàm thêm sinh viên
+        public String ThemSV(SINHVIEN sv)
+        {
+            String check = kiemTraSinhVien(sv);
+            if (check != null)
+            {
+                return check;
+            }
+            else
+            {
+                SINHVIEN result = _sv.ThemSV(sv);
+                if (result != null)
                 {
-                    return "Tên sinh viên không được để trống!";
-                }
-                else if(ngaySinh == null)
-                {
-                    return "Ngày sinh không được để trống!";
-                }
-                else if(soCMND == 0)
-                {
-                    return "Số chứng minh nhân dân không được để trống!";
-                }
-                else if(soDT == null)
-                {
-                    return "Số điện thoại không được để trống!0";
+                    return null;
                 }
                 else
                 {
-                    SINHVIEN add = new SINHVIEN();
-                    add.NgaySinh = ngaySinh;
-                    add.SoCMND = soCMND;
-                    add.SoDT = soDT;
-                    add.TenSV = tenSV;
-                    add.MaSV = maSV;
-                    add.DiaChi = diaChi;
-                    SINHVIEN result = sv.ThemSV(add);
-                    if(result != null)
-                    {
-                        return null;
-                    }else
-                    {
-                        return "Hệ thống đã xảy ra lỗi, xin vui lòng thử lại!";
-                    }
+                    return "Đã xảy ra lỗi trong quá trình thêm sinh viên, xin vui lòng thử lại!";
                 }
-            }catch(Exception e)
-            {
-                return "Hệ thống đã xảy ra lỗi, xin vui lòng thử lại!";
             }
         }
 
 
-        public String SuaSV(String maSV, String tenSV, DateTime ngaySinh, int soCMND, String soDT, String diaChi)
+        public String SuaSV(SINHVIEN sv)
         {
-            try
+
+            String check = kiemTraSinhVien(sv);
+            if (check != null)
             {
-                SINHVIEN check = sv.TimSVTheoMaSV(maSV);
-                if (check == null)
+                return check;
+            }
+            else
+            {
+                SINHVIEN checkSVTonTai = _sv.TimSVTheoMaSV(sv.MaSV);
+                if (checkSVTonTai == null)
                 {
-                    return "Đã xảy ra lỗi trong việc tìm sinh viên bạn muốn sửa, xin vui lòng thử lại!";
+                    return "Không tìm thấy thông tin cần sửa, xin vui lòng thử lại!";
                 }
                 else
                 {
-                    SINHVIEN edit = new SINHVIEN();
-                    edit.NgaySinh = ngaySinh;
-                    edit.SoCMND = soCMND;
-                    edit.TenSV = tenSV;
-                    edit.NgaySinh = ngaySinh;
-                    edit.SoDT = soDT;
-                    edit.DiaChi = diaChi;
-                    SINHVIEN result = sv.SuaSV(edit);
+                    SINHVIEN result = _sv.SuaSV(sv);
                     if (result == null)
                     {
                         return "Đã xảy ra lỗi trong quá trình sửa thông tin, xin vui lòng thử lại!";
@@ -94,12 +92,37 @@ namespace BUS
                         return null;
                     }
                 }
-            }catch(Exception e)
-            {
-                return "Hệ thống đã xảy ra lỗi, xin vui lòng thử lại!";
             }
         }
 
         public String XoaSV(String maSV)
+        {
+
+            SINHVIEN check = _sv.TimSVTheoMaSV(maSV);
+            if (check == null)
+            {
+                return "Không tìm thấy dữ liệu cần xóa, xin vui lòng thử lại!";
+            }
+            else
+            {
+                SINHVIEN result = _sv.XoaSV(check);
+                if (result == null)
+                {
+                    return "Đã xảy ra lỗi trong quá trình xóa sinh viên, xin vui lòng thử lại!";
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public IEnumerable<SINHVIEN> TimSV(SINHVIEN sv)
+        {
+            SINHVIEN lookFor = new SINHVIEN();
+            IEnumerable<SINHVIEN> result = _sv.TimSV(lookFor);
+            return result;
+
+        }
     }
 }

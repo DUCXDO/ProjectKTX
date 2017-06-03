@@ -41,7 +41,7 @@
             this.monoFlat_ThemeContainer_Bright1.Padding = new System.Windows.Forms.Padding(10, 70, 10, 9);
             this.monoFlat_ThemeContainer_Bright1.RoundCorners = true;
             this.monoFlat_ThemeContainer_Bright1.Sizable = true;
-            this.monoFlat_ThemeContainer_Bright1.Size = new System.Drawing.Size(853, 513);
+            this.monoFlat_ThemeContainer_Bright1.Size = new System.Drawing.Size(1006, 656);
             this.monoFlat_ThemeContainer_Bright1.SmartBounds = true;
             this.monoFlat_ThemeContainer_Bright1.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
             this.monoFlat_ThemeContainer_Bright1.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 513);
+            this.ClientSize = new System.Drawing.Size(1006, 656);
             this.Controls.Add(this.monoFlat_ThemeContainer_Bright1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";

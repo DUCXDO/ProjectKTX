@@ -14,9 +14,10 @@ namespace ProjectKTX
         [STAThread]
         static void Main()
         {
+            Form1 form1 = new Form1();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(form1);
         }
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3F39C34C-C6F9-446A-A6EC-DB197F5A4ABE}</ProjectGuid>
+    <ProjectGuid>{A299CC52-7098-4CEC-B2A6-D960C2F83CD6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BUS</RootNamespace>
-    <AssemblyName>BUS</AssemblyName>
+    <RootNamespace>DTO</RootNamespace>
+    <AssemblyName>DTO</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,19 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PhongBUS.cs" />
-    <Compile Include="SinhVienBUS.cs" />
+    <Compile Include="HOADONDTO.cs" />
+    <Compile Include="HOPDONGDTO.cs" />
+    <Compile Include="PHIEUGHIDIENNUOCDTO.cs" />
+    <Compile Include="PHIEUTHUDTO.cs" />
+    <Compile Include="PHIEUTRANGBIDTO.cs" />
+    <Compile Include="PHONGDTO.cs" />
+    <Compile Include="SINHVIENDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DAO\DAO.csproj">
-      <Project>{cca4ef7d-c5f5-465a-8cf1-7c882a964946}</Project>
-      <Name>DAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{a299cc52-7098-4cec-b2a6-d960c2f83cd6}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
+    <Compile Include="SOGHIDIENNUOCDTO.cs" />
+    <Compile Include="TAISANDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

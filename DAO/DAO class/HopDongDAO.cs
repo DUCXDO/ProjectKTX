@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,37 +9,54 @@ namespace DAO
 {
     public interface IHopDongDAO
     {
-        HOPDONG ThemHD(HOPDONG hd);
-        HOPDONG XoaHD(HOPDONG hd);
+        HOPDONG ThemHD(HOPDONGDTO hd);
+        HOPDONG XoaHD(HOPDONGDTO hd);
         IEnumerable<HOPDONG> TimTatCaHD();
-        IEnumerable<HOPDONG> TimHD(HOPDONG hd);
+        IEnumerable<HOPDONG> TimHD(HOPDONGDTO hd);
+        HOPDONG TimHDTheoSoHD(String soHD);
     }
 
     public class HopDongDAO : IHopDongDAO
     {
-        public HOPDONG ThemHD(HOPDONG hd)
+        public HOPDONG ThemHD(HOPDONGDTO hd)
         {
-
-            // khai báo và khởi tạo đối tượng kết nối với database
-            KTXEntities KTXe = new KTXEntities();
-            //Thêm mới 
-            HOPDONG result = KTXe.HOPDONGs.Add(hd);
-            //Lưu thay đổi
-            KTXe.SaveChanges();
-            //trả về đối tượng mới thêm để xác định kết quả
-            return result;
+            try
+            {
+                // khai báo và khởi tạo đối tượng kết nối với database
+                KTXEntities KTXe = new KTXEntities();
+                //Thêm mới 
+                HOPDONG add = new HOPDONG();
+                add.MaPhong = hd.MaPhong;
+                add.MaSV = hd.MaSV;
+                add.NgayLap = hd.NgayLap;
+                add.SoHD = hd.SoHD;
+                add.ThoiGianO = hd.ThoiGianO;
+                HOPDONG result = KTXe.HOPDONGs.Add(add);
+                //Lưu thay đổi
+                KTXe.SaveChanges();
+                //trả về đối tượng mới thêm để xác định kết quả
+                return result;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
 
         }
 
-        public HOPDONG XoaHD(HOPDONG hd)
+        public HOPDONG XoaHD(HOPDONGDTO hd)
         {
-
-            KTXEntities KTXe = new KTXEntities();
-            HOPDONG delete = KTXe.HOPDONGs.Find(hd.MaSV);
-            HOPDONG result = KTXe.HOPDONGs.Remove(delete);
-            return result;
-
-        }
+            try
+            {
+                KTXEntities KTXe = new KTXEntities();
+                HOPDONG delete = KTXe.HOPDONGs.Find(hd.MaSV);
+                HOPDONG result = KTXe.HOPDONGs.Remove(delete);
+                return result;
+            }catch(Exception e)
+            {
+                return null;
+            }
+}
 
 
         public IEnumerable<HOPDONG> TimTatCaHD()
@@ -51,7 +69,7 @@ namespace DAO
         }
 
 
-        public IEnumerable<HOPDONG> TimHD(HOPDONG hd)
+        public IEnumerable<HOPDONG> TimHD(HOPDONGDTO hd)
         {
 
             KTXEntities KTXe = new KTXEntities();
@@ -62,6 +80,13 @@ namespace DAO
             (hd.NgayLap == null) || (x.NgayLap == hd.NgayLap));
             return result;
 
+        }
+
+        public HOPDONG TimHDTheoSoHD(String soHD)
+        {
+            KTXEntities KTXe = new KTXEntities();
+            HOPDONG result = KTXe.HOPDONGs.SingleOrDefault(x => x.SoHD == soHD);
+            return result;
         }
     }
 }

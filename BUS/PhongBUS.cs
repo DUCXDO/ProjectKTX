@@ -1,37 +1,37 @@
-﻿using System;
+﻿using DAO;
+using DTO;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAO;
-using DTO;
-using System.ComponentModel.DataAnnotations;
 
 namespace BUS
 {
-    public class SinhVienBUS
+    public class PhongBUS
     {
         private readonly ISinhVienDAO _sv;
         private readonly IPhongDAO _p;
 
-        public SinhVienBUS(SinhVienDAO sv, PhongDAO p)
+        public PhongBUS(ISinhVienDAO sv, IPhongDAO p)
         {
             _sv = sv;
             _p = p;
         }
-        
+
         //Hàm check cái thành phần hợp lệ
-        public String kiemTraSinhVien(SINHVIENDTO sv)
+        public String kiemTraPhong(PHONGDTO p)
         {
             // Nội dung kiểm tra
-            var validationContext = new ValidationContext(sv, null, null);
+            var validationContext = new ValidationContext(p, null, null);
             // Danh sách chứa kết quả kiểm tra
             var validationResults = new List<ValidationResult>();
 
             // Biến hợp lệ hay không
-            var isValid = Validator.TryValidateObject(sv, validationContext, validationResults);
+            var isValid = Validator.TryValidateObject(p, validationContext, validationResults);
             // Nếu hợp lệ
-            if(isValid == true)
+            if (isValid == true)
             {
                 return null;
             }
@@ -40,7 +40,7 @@ namespace BUS
             {
                 // Những lỗi không hợp lệ
                 String result = String.Empty;
-                foreach(var r in validationResults)
+                foreach (var r in validationResults)
                 {
                     result += r.ErrorMessage;
                 }
@@ -49,16 +49,16 @@ namespace BUS
             }
         }
 
-        //Hàm thêm sinh viên
-        public String ThemSV(SINHVIENDTO sv)
+        //Hàm thêm phòng
+        public String ThemP(PHONGDTO p)
         {
             // Kiểm tra mã sinh viên đã tồn tại chưa ?
-            SINHVIEN kiemTraSVTonTai = _sv.TimSVTheoMaSV(sv.MaSV);
+            PHONG kiemTraPhongTonTai = _p.TimPTheoMaP(p.MaPhong);
             // Nếu mã chưa tồn tại
-            if (kiemTraSVTonTai == null)
+            if (kiemTraPhongTonTai == null)
             {
-                // Kiểm tra sinh viên có hợp lệ không ?
-                String check = kiemTraSinhVien(sv);
+                // Kiểm tra phòng có hợp lệ không ?
+                String check = kiemTraPhong(p);
                 // Không hợp lệ
                 if (check != null)
                 {

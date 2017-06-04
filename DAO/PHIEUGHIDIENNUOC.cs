@@ -18,6 +18,6 @@ namespace DAO
         public string MaPhong { get; set; }
         public int SoDienNuoc { get; set; }
         public System.DateTime NgayGhi { get; set; }
-        public int LoaiPhieuGhi { get; set; }
+        public bool LoaiPhieuGhi { get; set; }
     }
 }

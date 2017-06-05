@@ -51,7 +51,7 @@ namespace DAO
             try
             {
                 KTXEntities KTXe = new KTXEntities();
-                SINHVIEN delete = KTXe.SINHVIENs.Find(maSV);
+                SINHVIEN delete = KTXe.SINHVIENs.SingleOrDefault(x => x.MaSV == maSV);
                 SINHVIEN result = KTXe.SINHVIENs.Remove(delete);
                 return result;
             }
@@ -66,7 +66,7 @@ namespace DAO
             try
             {
                 KTXEntities KTXe = new KTXEntities();
-                SINHVIEN edit = KTXe.SINHVIENs.Find(sv);
+                SINHVIEN edit = KTXe.SINHVIENs.SingleOrDefault(x => x.MaSV == sv.MaSV);
                 edit.NgaySinh = sv.NgaySinh;
                 edit.SoCMND = sv.SoCMND;
                 edit.SoDT = sv.SoDT;

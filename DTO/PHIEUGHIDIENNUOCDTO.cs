@@ -9,6 +9,10 @@ namespace DTO
 {
     public class PHIEUGHIDIENNUOCDTO
     {
+        [Required(ErrorMessage = "Mã phiếu ghi điện nước không được để trống!")]
+        [StringLength(10, ErrorMessage = "Mã phiếu ghi quá dài, chỉ nhập tối đa 10 kí tự.")]
+        public string MaPhieuGhiDienNuoc { get; set; }
+
         [Required(ErrorMessage = "Mã sổ không được để trống!")]
         [StringLength(10, ErrorMessage = "Mã sổ quá dài, chỉ nhập tối đa 10 kí tự.")]
         public string MaSo { get; set; }

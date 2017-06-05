@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class TAISANDTO
+    public class TAISANDTO
     {
         [Required(ErrorMessage = "Mã tài sản không được để trống!")]
         [StringLength(10, ErrorMessage = "Mã tài sản quá dài, chỉ nhập tối đa 10 kí tự.")]

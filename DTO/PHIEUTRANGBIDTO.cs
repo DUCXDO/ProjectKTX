@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class PHIEUTRANGBIDTO
+    public class PHIEUTRANGBIDTO
     {
         [Required(ErrorMessage = "Mã phiếu trang bị không được để trống!")]
         [StringLength(10, ErrorMessage = "Mã phiếu trang bị quá dài, chỉ nhập tối đa 10 kí tự.")]

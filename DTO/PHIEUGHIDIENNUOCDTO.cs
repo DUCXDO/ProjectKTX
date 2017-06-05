@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class PHIEUGHIDIENNUOCDTO
+    public class PHIEUGHIDIENNUOCDTO
     {
         [Required(ErrorMessage = "Mã sổ không được để trống!")]
         [StringLength(10, ErrorMessage = "Mã sổ quá dài, chỉ nhập tối đa 10 kí tự.")]

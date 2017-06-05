@@ -10,7 +10,7 @@ namespace DAO
     public interface IHopDongDAO
     {
         HOPDONG ThemHD(HOPDONGDTO hd);
-        HOPDONG XoaHD(HOPDONGDTO hd);
+        HOPDONG XoaHD(String soHD);
         IEnumerable<HOPDONG> TimTatCaHD();
         IEnumerable<HOPDONG> TimHD(HOPDONGDTO hd);
         HOPDONG TimHDTheoSoHD(String soHD);
@@ -44,12 +44,12 @@ namespace DAO
 
         }
 
-        public HOPDONG XoaHD(HOPDONGDTO hd)
+        public HOPDONG XoaHD(String soHD)
         {
             try
             {
                 KTXEntities KTXe = new KTXEntities();
-                HOPDONG delete = KTXe.HOPDONGs.Find(hd.MaSV);
+                HOPDONG delete = KTXe.HOPDONGs.SingleOrDefault(x => x.SoHD == soHD);
                 HOPDONG result = KTXe.HOPDONGs.Remove(delete);
                 return result;
             }catch(Exception e)

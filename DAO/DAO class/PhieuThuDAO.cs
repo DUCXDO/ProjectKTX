@@ -10,7 +10,7 @@ namespace DAO
     public interface IPhieuThuDAO
     {
         PHIEUTHU ThemPT(PHIEUTHUDTO pt);
-        PHIEUTHU XoaPT(PHIEUTHUDTO pt);
+        PHIEUTHU XoaPT(String soPT);
         IEnumerable<PHIEUTHU> TimTatCaPT();
         IEnumerable<PHIEUTHU> TimPT(PHIEUTHUDTO pt);
         PHIEUTHU TimPTTheoSoPT(String soPT);
@@ -43,12 +43,12 @@ namespace DAO
             }
         }
 
-        public PHIEUTHU XoaPT(PHIEUTHUDTO pt)
+        public PHIEUTHU XoaPT(String  soPT)
         {
             try
             {
                 KTXEntities KTXe = new KTXEntities();
-                PHIEUTHU delete = KTXe.PHIEUTHUs.Find(pt.SoPT);
+                PHIEUTHU delete = KTXe.PHIEUTHUs.SingleOrDefault(x => x.SoPT == soPT);
                 PHIEUTHU result = KTXe.PHIEUTHUs.Remove(delete);
                 return result;
             }

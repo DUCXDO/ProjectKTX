@@ -49,7 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO class\PhieuTrangBiDAO.cs" />
     <Compile Include="DAO class\PhongDAO.cs" />
+    <Compile Include="DAO class\TaiSanDAO.cs" />
     <Compile Include="DataAccess.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -52,7 +52,7 @@ namespace BUS
         //Hàm thêm phòng
         public String ThemP(PHONGDTO p)
         {
-            // Kiểm tra mã sinh viên đã tồn tại chưa ?
+            // Kiểm tra mã phòng đã tồn tại chưa ?
             PHONG kiemTraPhongTonTai = _p.TimPTheoMaP(p.MaPhong);
             // Nếu mã chưa tồn tại
             if (kiemTraPhongTonTai == null)
@@ -67,8 +67,8 @@ namespace BUS
                 // Hợp lệ
                 else
                 {
-                    // Hàm thêm sinh viên
-                    SINHVIEN result = _sv.ThemSV(sv);
+                    // Hàm thêm phòng
+                    PHONG result = _p.ThemP(p);
                     // Kiếm tra kết quả của hàm thêm
                     if (result != null)
                     {
@@ -76,22 +76,22 @@ namespace BUS
                     }
                     else
                     {
-                        return "Đã xảy ra lỗi trong quá trình thêm sinh viên, xin vui lòng thử lại!";
+                        return "Đã xảy ra lỗi trong quá trình thêm phòng, xin vui lòng thử lại!";
                     }
                 }
             }
             // Nếu mã đã tồn tại
             else
             {
-                return "Mã sinh viên đã tồn tại!";
+                return "Mã phòng đã tồn tại!";
             }
         }
 
 
-        public String SuaSV(SINHVIENDTO sv)
+        public String SuaP(PHONGDTO p)
         {
-            // Kiểm tra thông tin sửa sinh viên có hợp lệ không
-            String check = kiemTraSinhVien(sv);
+            // Kiểm tra thông tin sửa phòng có hợp lệ không
+            String check = kiemTraPhong(p);
             // Không hợp lệ
             if (check != null)
             {
@@ -100,18 +100,18 @@ namespace BUS
             // Hợp lệ
             else
             {
-                // Kiểm tra sinh viên muốn sửa có tồn tại không ????
-                SINHVIEN checkSVTonTai = _sv.TimSVTheoMaSV(sv.MaSV);
+                // Kiểm tra phòng muốn sửa có tồn tại không ????
+                PHONG checkPTonTai = _p.TimPTheoMaP(p.MaPhong);
                 // Không tồn tại
-                if (checkSVTonTai == null)
+                if (checkPTonTai == null)
                 {
                     return "Không tìm thấy thông tin cần sửa, xin vui lòng thử lại!";
                 }
                 // Tồn tại
                 else
                 {
-                    // Sửa sinh viên
-                    SINHVIEN result = _sv.SuaSV(sv);
+                    // Sửa phòng
+                    PHONG result = _p.SuaP(p);
                     // Kiểm tra kết quả của hàm sửa
                     if (result == null)
                     {
@@ -125,10 +125,10 @@ namespace BUS
             }
         }
 
-        public String XoaSV(String maSV)
+        public String XoaP(String maP)
         {
-            // Kiểm tra sinh viên có tồn tại không ?
-            SINHVIEN check = _sv.TimSVTheoMaSV(maSV);
+            // Kiểm tra phòng có tồn tại không ?
+            PHONG check = _p.TimPTheoMaP(maP);
             // Không tồn tại
             if (check == null)
             {
@@ -137,12 +137,12 @@ namespace BUS
             // Tồn tại
             else
             {
-                // Hàm xóa sinh viên
-                SINHVIEN result = _sv.XoaSV(check.MaSV);
+                // Hàm xóa phòng
+                PHONG result = _p.XoaP(check.MaPhong);
                 // Kiểm tra kết quả của hàm xóa sinh viên
                 if (result == null)
                 {
-                    return "Đã xảy ra lỗi trong quá trình xóa sinh viên, xin vui lòng thử lại!";
+                    return "Đã xảy ra lỗi trong quá trình xóa phòng, xin vui lòng thử lại!";
                 }
                 else
                 {
@@ -151,10 +151,10 @@ namespace BUS
             }
         }
 
-        public IEnumerable<SINHVIEN> TimSV(SINHVIENDTO sv)
+        public IEnumerable<PHONG> TimP(PHONGDTO p)
         {
-            // Hàm tìm sinh viên theo các điều kiện
-            IEnumerable<SINHVIEN> result = _sv.TimSV(sv);
+            // Hàm tìm phòng theo các điều kiện
+            IEnumerable<PHONG> result = _p.TimP(p);
             return result;
         }
     }

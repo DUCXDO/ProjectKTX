@@ -51,7 +51,9 @@
   <ItemGroup>
     <Compile Include="DAO class\PhieuTrangBiDAO.cs" />
     <Compile Include="DAO class\PhongDAO.cs" />
-    <Compile Include="DAO class\TaiSanDAO.cs" />
+    <Compile Include="DAO class\HopDongDAO.cs" />
+    <Compile Include="DAO class\PhieuThuDAO.cs" />
+    <Compile Include="DAO class\SinhVienDAO.cs" />
     <Compile Include="DataAccess.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,25 +75,22 @@
     <Compile Include="HOPDONG.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAO class\HopDongDAO.cs" />
     <Compile Include="PHIEUGHIDIENNUOC.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
     <Compile Include="PHIEUTHU.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAO class\PhieuThuDAO.cs" />
     <Compile Include="PHIEUTRANGBI.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
     <Compile Include="PHONG.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SINHVIEN.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAO class\SinhVienDAO.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SOGHIDIENNUOC.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
@@ -114,6 +113,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{a299cc52-7098-4cec-b2a6-d960c2f83cd6}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DataAccess.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataAccess.edmx</DependentUpon>
@@ -124,12 +129,6 @@
       <DependentUpon>DataAccess.edmx</DependentUpon>
       <LastGenOutput>DataAccess.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{a299cc52-7098-4cec-b2a6-d960c2f83cd6}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

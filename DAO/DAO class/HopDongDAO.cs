@@ -14,6 +14,7 @@ namespace DAO
         IEnumerable<HOPDONG> TimTatCaHD();
         IEnumerable<HOPDONG> TimHD(HOPDONGDTO hd);
         HOPDONG TimHDTheoSoHD(String soHD);
+        IEnumerable<HOPDONG> TimHDTheoP(String maP);
     }
 
     public class HopDongDAO : IHopDongDAO
@@ -86,6 +87,13 @@ namespace DAO
         {
             KTXEntities KTXe = new KTXEntities();
             HOPDONG result = KTXe.HOPDONGs.SingleOrDefault(x => x.SoHD == soHD);
+            return result;
+        }
+
+        public IEnumerable<HOPDONG> TimHDTheoP(String maP)
+        {
+            KTXEntities KTXe = new KTXEntities();
+            IEnumerable<HOPDONG> result = KTXe.HOPDONGs.AsQueryable().Where(x => x.MaPhong == maP);
             return result;
         }
     }

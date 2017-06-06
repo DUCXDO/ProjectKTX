@@ -13,9 +13,11 @@ namespace BUS
     {
         private readonly ISinhVienDAO _sv;
         private readonly IPhongDAO _p;
+        private readonly IHopDongDAO _hd;
 
-        public SinhVienBUS(SinhVienDAO sv, PhongDAO p)
+        public SinhVienBUS(SinhVienDAO sv, PhongDAO p, HopDongDAO hd)
         {
+            _hd = hd;
             _sv = sv;
             _p = p;
         }
@@ -155,6 +157,49 @@ namespace BUS
         {
             // Hàm tìm sinh viên theo các điều kiện
             IEnumerable<SINHVIEN> result = _sv.TimSV(sv);
+            return result;
+        }
+
+        public IEnumerable<SINHVIEN> TimSVTheoPhong(String maP)
+        {
+            IEnumerable<HOPDONG> hopDong = _hd.TimHDTheoP(maP);
+            List<SINHVIEN> result = new List<SINHVIEN>();
+            foreach (var item in hopDong)
+            {
+                result.Add(_sv.TimSVTheoMaSV(item.MaSV));
+            }
+            return result.AsEnumerable();
+            
+        }
+
+        // các hàm mới thêm
+
+        public IEnumerable<SINHVIEN> TimTatCaSV()
+        {
+            return _sv.TimTatCaSV();
+        }
+
+        public SINHVIENDTO chuyenDoiSVThanhSVDTO(SINHVIEN sv)
+        {
+            SINHVIENDTO result = new SINHVIENDTO();
+            result.DiaChi = sv.DiaChi;
+            result.MaSV = sv.MaSV;
+            result.NgaySinh = sv.NgaySinh;
+            result.SoCMND = sv.SoCMND;
+            result.SoDT = sv.SoDT;
+            result.TenSV = sv.TenSV;
+            return result;
+        }
+
+        public SINHVIEN chuyenDoiSVDTOThanhSV(SINHVIENDTO sv)
+        {
+            SINHVIEN result = new SINHVIEN();
+            result.DiaChi = sv.DiaChi;
+            result.MaSV = sv.MaSV;
+            result.NgaySinh = sv.NgaySinh;
+            result.SoCMND = sv.SoCMND;
+            result.SoDT = sv.SoDT;
+            result.TenSV = sv.TenSV;
             return result;
         }
     }

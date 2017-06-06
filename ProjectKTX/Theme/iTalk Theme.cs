@@ -4497,12 +4497,12 @@ namespace iTalk
 
             DoubleBuffered = true;
             SizeMode = TabSizeMode.Fixed;
-            ItemSize = new Size(44, 135);
+            ItemSize = new Size(100, 150);
             DrawMode = TabDrawMode.OwnerDrawFixed;
 
             foreach (TabPage Page in this.TabPages)
             {
-                Page.BackColor = Color.FromArgb(246, 246, 246);
+                Page.BackColor = Color.FromArgb(231, 247, 247);
             }
         }
 
@@ -4534,7 +4534,7 @@ namespace iTalk
                 }
                 finally
                 {
-                    e.Control.BackColor = Color.FromArgb(246, 246, 246);
+                    e.Control.BackColor = Color.FromArgb(231, 247, 247);
                 }
             }
         }
@@ -4569,7 +4569,7 @@ namespace iTalk
                     //Rectangle TabHighlighter = new Rectangle(new Point(GetTabRect(TabIndex).X - 2, GetTabRect(TabIndex).Location.Y - (TabIndex == 0 ? 1 : 1)), new Size(4, GetTabRect(TabIndex).Height - 7));
                     //_Graphics.FillRectangle(new SolidBrush(Color.FromArgb(89, 169, 222)), TabHighlighter);
                     // Draw tab text
-                    _Graphics.DrawString(TabPages[TabIndex].Text, new Font(Font.FontFamily, Font.Size, FontStyle.Bold), new SolidBrush(Color.FromArgb(254, 255, 255)), new Rectangle(TabRect.Left + 40, TabRect.Top + 12, TabRect.Width - 40, TabRect.Height), new StringFormat { Alignment = StringAlignment.Near });
+                    _Graphics.DrawString(TabPages[TabIndex].Text, new Font(Font.FontFamily, Font.Size, FontStyle.Bold), new SolidBrush(Color.FromArgb(254, 255, 255)), new Rectangle(TabRect.Left + 20, TabRect.Top + 40, TabRect.Width - 40, TabRect.Height), new StringFormat { Alignment = StringAlignment.Center });
 
                     if (this.ImageList != null)
                     {
@@ -4587,7 +4587,7 @@ namespace iTalk
                     //Tô màu cho các ô không được chọn
                     _Graphics.FillRectangle(new SolidBrush(Color.FromArgb(146, 212, 214)), TabRect.X, TabRect.Y, TabRect.Width, TabRect.Height + 3);
                     //Viết chữ
-                    _Graphics.DrawString(TabPages[TabIndex].Text, new Font(Font.FontFamily, Font.Size, FontStyle.Bold), new SolidBrush(Color.FromArgb(254, 255, 255)), new Rectangle(TabRect.Left + 40, TabRect.Top + 12, TabRect.Width - 40, TabRect.Height), new StringFormat { Alignment = StringAlignment.Near });
+                    _Graphics.DrawString(TabPages[TabIndex].Text, new Font(Font.FontFamily, Font.Size, FontStyle.Bold), new SolidBrush(Color.FromArgb(254, 255, 255)), new Rectangle(TabRect.Left + 20, TabRect.Top + 40, TabRect.Width - 40, TabRect.Height), new StringFormat { Alignment = StringAlignment.Center });
 
                     if (this.ImageList != null)
                     {
@@ -4648,7 +4648,7 @@ namespace iTalk
 
             DoubleBuffered = true;
             SizeMode = TabSizeMode.Fixed;
-            ItemSize = new Size(44, 135);
+            ItemSize = new Size(100, 150);
             DrawMode = TabDrawMode.OwnerDrawFixed;
 
             foreach (TabPage Page in this.TabPages)
@@ -4685,7 +4685,7 @@ namespace iTalk
                 }
                 finally
                 {
-                    e.Control.BackColor = Color.FromArgb(246, 246, 246);
+                    e.Control.BackColor = Color.FromArgb(231, 247, 247);
                 }
             }
         }
@@ -4698,7 +4698,7 @@ namespace iTalk
 
             var _Graphics = G;
 
-            _Graphics.Clear(Color.FromArgb(246, 246, 246));
+            _Graphics.Clear(Color.FromArgb(231, 247, 247));
             _Graphics.SmoothingMode = SmoothingMode.HighSpeed;
             _Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
             _Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
@@ -4720,7 +4720,7 @@ namespace iTalk
                     //Rectangle TabHighlighter = new Rectangle(new Point(GetTabRect(TabIndex).X - 2, GetTabRect(TabIndex).Location.Y - (TabIndex == 0 ? 1 : 1)), new Size(4, GetTabRect(TabIndex).Height - 7));
                     //_Graphics.FillRectangle(new SolidBrush(Color.FromArgb(89, 169, 222)), TabHighlighter);
                     // Draw tab text
-                    _Graphics.DrawString(TabPages[TabIndex].Text, new Font(Font.FontFamily, Font.Size, FontStyle.Bold), new SolidBrush(Color.FromArgb(254, 255, 255)), new Rectangle(TabRect.Left + 40, TabRect.Top + 12, TabRect.Width - 40, TabRect.Height), new StringFormat { Alignment = StringAlignment.Near });
+                    _Graphics.DrawString(TabPages[TabIndex].Text, new Font(Font.FontFamily, Font.Size, FontStyle.Bold), new SolidBrush(Color.FromArgb(254, 255, 255)), new Rectangle(TabRect.Left + 20, TabRect.Top + 40, TabRect.Width - 40, TabRect.Height), new StringFormat { Alignment = StringAlignment.Center });
 
                     if (this.ImageList != null)
                     {
@@ -4734,7 +4734,7 @@ namespace iTalk
                 else
                 {
                     Rectangle TabRect = new Rectangle(new Point(GetTabRect(TabIndex).Location.X - 2, GetTabRect(TabIndex).Location.Y - 2), new Size(GetTabRect(TabIndex).Width + 3, GetTabRect(TabIndex).Height - 8));
-                    _Graphics.DrawString(TabPages[TabIndex].Text, new Font(Font.FontFamily, Font.Size, FontStyle.Bold), new SolidBrush(Color.FromArgb(159, 162, 167)), new Rectangle(TabRect.Left + 40, TabRect.Top + 12, TabRect.Width - 40, TabRect.Height), new StringFormat { Alignment = StringAlignment.Near });
+                    _Graphics.DrawString(TabPages[TabIndex].Text, new Font(Font.FontFamily, Font.Size, FontStyle.Bold), new SolidBrush(Color.FromArgb(159, 162, 167)), new Rectangle(TabRect.Left + 20, TabRect.Top + 40, TabRect.Width - 40, TabRect.Height), new StringFormat { Alignment = StringAlignment.Center });
 
                     if (this.ImageList != null)
                     {

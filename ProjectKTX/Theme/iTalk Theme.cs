@@ -4547,7 +4547,7 @@ namespace iTalk
 
             var _Graphics = G;
 
-            _Graphics.Clear(Color.FromArgb(246, 246, 246));
+            _Graphics.Clear(Color.FromArgb(231, 247, 247));
             _Graphics.SmoothingMode = SmoothingMode.HighSpeed;
             _Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
             _Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
@@ -4734,7 +4734,7 @@ namespace iTalk
                 else
                 {
                     Rectangle TabRect = new Rectangle(new Point(GetTabRect(TabIndex).Location.X - 2, GetTabRect(TabIndex).Location.Y - 2), new Size(GetTabRect(TabIndex).Width + 3, GetTabRect(TabIndex).Height - 8));
-                    _Graphics.DrawString(TabPages[TabIndex].Text, new Font(Font.FontFamily, Font.Size, FontStyle.Bold), new SolidBrush(Color.FromArgb(159, 162, 167)), new Rectangle(TabRect.Left + 20, TabRect.Top + 40, TabRect.Width - 40, TabRect.Height), new StringFormat { Alignment = StringAlignment.Center });
+                    _Graphics.DrawString(TabPages[TabIndex].Text, new Font(Font.FontFamily, Font.Size, FontStyle.Bold), new SolidBrush(Color.FromArgb(254, 255, 255)), new Rectangle(TabRect.Left + 20, TabRect.Top + 40, TabRect.Width - 40, TabRect.Height), new StringFormat { Alignment = StringAlignment.Center });
 
                     if (this.ImageList != null)
                     {
@@ -4755,6 +4755,136 @@ namespace iTalk
             B.Dispose();
         }
     }
+    #endregion
+
+    #region ComboBox
+
+    class iTalk_ComboBox_Custom : ComboBox
+    {
+
+        #region Variables
+
+        private int _StartIndex = 0;
+        private Color _HoverSelectionColor = Color.FromArgb(246, 246, 246);
+
+        #endregion
+        #region Custom Properties
+
+        public int StartIndex
+        {
+            get { return _StartIndex; }
+            set
+            {
+                _StartIndex = value;
+                try
+                {
+                    base.SelectedIndex = value;
+                }
+                catch
+                {
+                }
+                Invalidate();
+            }
+        }
+
+        public Color HoverSelectionColor
+        {
+            get { return _HoverSelectionColor; }
+            set
+            {
+                _HoverSelectionColor = value;
+                Invalidate();
+            }
+        }
+
+        #endregion
+        #region EventArgs
+
+        protected override void OnDrawItem(DrawItemEventArgs e)
+        {
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(_HoverSelectionColor), e.Bounds);
+            }
+            else
+            {
+                e.Graphics.FillRectangle(Brushes.White, e.Bounds);
+            }
+
+            if (!(e.Index == -1))
+            {
+                e.Graphics.DrawString(GetItemText(Items[e.Index]), e.Font, Brushes.DimGray, e.Bounds);
+            }
+        }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            SuspendLayout();
+            Update();
+            ResumeLayout();
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            base.OnPaintBackground(e);
+        }
+
+        #endregion
+
+        public iTalk_ComboBox_Custom()
+        {
+            SetStyle((ControlStyles)139286, true);
+            SetStyle(ControlStyles.Selectable, false);
+
+            DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            DropDownStyle = ComboBoxStyle.DropDownList;
+
+            BackColor = Color.FromArgb(246, 246, 246);
+            ForeColor = Color.FromArgb(246, 246, 246);
+            Size = new Size(135, 26);
+            ItemHeight = 20;
+            DropDownHeight = 100;
+            Font = new Font("Segoe UI", 10, FontStyle.Regular);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            LinearGradientBrush LGB = default(LinearGradientBrush);
+            GraphicsPath GP = default(GraphicsPath);
+
+            e.Graphics.Clear(BackColor);
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            // Create a curvy border
+            GP = RoundRectangle.RoundRect(0, 0, Width - 1, Height - 1, 5);
+            // Fills the body of the rectangle with a gradient
+            LGB = new LinearGradientBrush(ClientRectangle, Color.FromArgb(246, 246, 246), Color.FromArgb(246, 246, 246), 90f);
+
+            e.Graphics.SetClip(GP);
+            e.Graphics.FillRectangle(LGB, ClientRectangle);
+            e.Graphics.ResetClip();
+
+            // Draw rectangle border
+            e.Graphics.DrawPath(new Pen(Color.FromArgb(204, 204, 204)), GP);
+            // Draw string
+            e.Graphics.DrawString(Text, Font, new SolidBrush(Color.FromArgb(142, 142, 142)), new Rectangle(3, 0, Width - 20, Height), new StringFormat
+            {
+                LineAlignment = StringAlignment.Center,
+                Alignment = StringAlignment.Near
+            });
+
+            // Draw the dropdown arrow
+            e.Graphics.DrawLine(new Pen(Color.FromArgb(160, 160, 160), 2), new Point(Width - 18, 10), new Point(Width - 14, 14));
+            e.Graphics.DrawLine(new Pen(Color.FromArgb(160, 160, 160), 2), new Point(Width - 14, 14), new Point(Width - 10, 10));
+            e.Graphics.DrawLine(new Pen(Color.FromArgb(160, 160, 160)), new Point(Width - 14, 15), new Point(Width - 14, 14));
+
+            GP.Dispose();
+            LGB.Dispose();
+        }
+    }
+
     #endregion
 
     #region TrackBar

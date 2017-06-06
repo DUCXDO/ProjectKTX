@@ -16,6 +16,10 @@ namespace DTO
         [StringLength(250, ErrorMessage = "Vị trí phòng quá dài, chỉ nhập tối đa 250 kí tự.")]
         public string ViTriP { get; set; }
 
+        [Required(ErrorMessage = "Tên phòng không được để trống!")]
+        [StringLength(250, ErrorMessage = "Tên phòng quá dài, chỉ nhập tối đa 250 kí tự.")]
+        public string TenP { get; set; }
+
         public int SoNguoiO { get; set; }
 
         [Required(ErrorMessage = "Số người ở tối đa không được để trống!")]

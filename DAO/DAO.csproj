@@ -49,9 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO class\HoaDonDAO.cs" />
+    <Compile Include="DAO class\PhieuGhiDienNuocDAO.cs" />
     <Compile Include="DAO class\PhieuTrangBiDAO.cs" />
     <Compile Include="DAO class\PhongDAO.cs" />
+<<<<<<< HEAD
+    <Compile Include="DAO class\SoGhiDienNuocDAO.cs" />
     <Compile Include="DAO class\TaiSanDAO.cs" />
+=======
+>>>>>>> d44c21fc4267160ac24481d4f82ebff6e6d8314e
+    <Compile Include="DAO class\HopDongDAO.cs" />
+    <Compile Include="DAO class\PhieuThuDAO.cs" />
+    <Compile Include="DAO class\SinhVienDAO.cs" />
     <Compile Include="DataAccess.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,25 +82,22 @@
     <Compile Include="HOPDONG.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAO class\HopDongDAO.cs" />
     <Compile Include="PHIEUGHIDIENNUOC.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
     <Compile Include="PHIEUTHU.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAO class\PhieuThuDAO.cs" />
     <Compile Include="PHIEUTRANGBI.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
     <Compile Include="PHONG.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SINHVIEN.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAO class\SinhVienDAO.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SOGHIDIENNUOC.cs">
       <DependentUpon>DataAccess.tt</DependentUpon>
     </Compile>
@@ -100,36 +106,50 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <EntityDeploy Include="DataAccess.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataAccess.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DataAccess.edmx.diagram">
-      <DependentUpon>DataAccess.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DataAccess.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataAccess.edmx</DependentUpon>
-      <LastGenOutput>DataAccess.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DataAccess.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataAccess.edmx</DependentUpon>
-      <LastGenOutput>DataAccess.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{a299cc52-7098-4cec-b2a6-d960c2f83cd6}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DataAccess.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataAccess.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="DataAccess.edmx.diagram">
+      <DependentUpon>DataAccess.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+<<<<<<< HEAD
+=======
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{a299cc52-7098-4cec-b2a6-d960c2f83cd6}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+>>>>>>> d44c21fc4267160ac24481d4f82ebff6e6d8314e
+    <Content Include="DataAccess.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataAccess.Context.cs</LastGenOutput>
+      <DependentUpon>DataAccess.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataAccess.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataAccess.edmx</DependentUpon>
+      <LastGenOutput>DataAccess.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

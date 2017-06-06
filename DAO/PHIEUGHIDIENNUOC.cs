@@ -19,5 +19,6 @@ namespace DAO
         public int SoDienNuoc { get; set; }
         public System.DateTime NgayGhi { get; set; }
         public bool LoaiPhieuGhi { get; set; }
+        public string MaPhieuGhiDienNuoc { get; set; }
     }
 }

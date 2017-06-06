@@ -18,5 +18,6 @@ namespace DAO
         public string ViTriP { get; set; }
         public int SoNguoiO { get; set; }
         public int SoNguoiTD { get; set; }
+        public string TenP { get; set; }
     }
 }

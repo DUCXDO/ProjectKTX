@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCA4EF7D-C5F5-465A-8CF1-7C882A964946}</ProjectGuid>
+    <ProjectGuid>{A94C5623-E483-4123-A0FD-A425AD374FE0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DAO</RootNamespace>
@@ -49,21 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO class\HoaDonDAO.cs" />
-    <Compile Include="DAO class\PhieuGhiDienNuocDAO.cs" />
-    <Compile Include="DAO class\PhieuTrangBiDAO.cs" />
-    <Compile Include="DAO class\PhongDAO.cs" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <Compile Include="DAO class\SoGhiDienNuocDAO.cs" />
-    <Compile Include="DAO class\TaiSanDAO.cs" />
-=======
->>>>>>> d44c21fc4267160ac24481d4f82ebff6e6d8314e
-=======
->>>>>>> d44c21fc4267160ac24481d4f82ebff6e6d8314e
-    <Compile Include="DAO class\HopDongDAO.cs" />
-    <Compile Include="DAO class\PhieuThuDAO.cs" />
-    <Compile Include="DAO class\SinhVienDAO.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DAO\HoaDonDAO.cs" />
+    <Compile Include="DAO\HopDongDAO.cs" />
+    <Compile Include="DAO\PhieuGhiDienNuocDAO.cs" />
+    <Compile Include="DAO\PhieuThuDAO.cs" />
+    <Compile Include="DAO\PhieuTrangBiDAO.cs" />
+    <Compile Include="DAO\PhongDAO.cs" />
+    <Compile Include="DAO\SinhVienDAO.cs" />
+    <Compile Include="DAO\SoGhiDienNuocDAO.cs" />
+    <Compile Include="DAO\TaiSanDAO.cs" />
     <Compile Include="DataAccess.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -109,9 +104,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{a299cc52-7098-4cec-b2a6-d960c2f83cd6}</Project>
       <Name>DTO</Name>
@@ -131,21 +123,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{a299cc52-7098-4cec-b2a6-d960c2f83cd6}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-<<<<<<< HEAD
->>>>>>> d44c21fc4267160ac24481d4f82ebff6e6d8314e
-=======
->>>>>>> d44c21fc4267160ac24481d4f82ebff6e6d8314e
     <Content Include="DataAccess.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DataAccess.Context.cs</LastGenOutput>
@@ -156,6 +133,9 @@
       <DependentUpon>DataAccess.edmx</DependentUpon>
       <LastGenOutput>DataAccess.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

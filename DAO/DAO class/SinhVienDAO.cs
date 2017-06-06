@@ -53,6 +53,7 @@ namespace DAO
                 KTXEntities KTXe = new KTXEntities();
                 SINHVIEN delete = KTXe.SINHVIENs.SingleOrDefault(x => x.MaSV == maSV);
                 SINHVIEN result = KTXe.SINHVIENs.Remove(delete);
+                KTXe.SaveChanges();
                 return result;
             }
             catch (Exception e)
@@ -112,10 +113,10 @@ namespace DAO
 
             KTXEntities KTXe = new KTXEntities();
             IEnumerable<SINHVIEN> result = KTXe.SINHVIENs.AsQueryable().Where(x =>
-            (sv.MaSV == null || x.MaSV == sv.MaSV) &&
-            (sv.NgaySinh == null || x.NgaySinh == sv.NgaySinh) &&
+            (sv.MaSV == "" || x.MaSV == sv.MaSV) &&
+            (sv.TenSV == "" || x.TenSV.Contains(sv.TenSV))&&
             (sv.SoCMND == 0) || (x.SoCMND == sv.SoCMND) &&
-            (sv.SoDT == null) || (x.SoDT == sv.SoDT));
+            (sv.SoDT == "") || (x.SoDT == sv.SoDT));
             return result;
 
         }

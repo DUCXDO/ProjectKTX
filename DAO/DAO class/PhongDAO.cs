@@ -14,6 +14,7 @@ namespace DAO
         PHONG SuaP(PHONGDTO p);
         IEnumerable<PHONG> TimTatCaP();
         PHONG TimPTheoMaP(String maP);
+        IEnumerable<PHONG> TimP(PHONGDTO p);
     }
 
     public class PhongDAO : IPhongDAO
@@ -27,6 +28,7 @@ namespace DAO
                 KTXEntities KTXe = new KTXEntities();
                 PHONG add = new PHONG();
                 add.MaPhong = p.MaPhong;
+                add.TenP = p.TenP;
                 add.SoNguoiO = p.SoNguoiO;
                 add.SoNguoiTD = p.SoNguoiTD;
                 add.ViTriP = p.ViTriP;
@@ -66,6 +68,7 @@ namespace DAO
                 KTXEntities KTXe = new KTXEntities();
                 PHONG edit = KTXe.PHONGs.SingleOrDefault(x => x.MaPhong == p.MaPhong);
                 edit.SoNguoiTD = p.SoNguoiTD;
+                edit.TenP = p.TenP;
                 edit.ViTriP = p.ViTriP;
                 int result = KTXe.SaveChanges();
                 if (result == 1)
@@ -92,6 +95,17 @@ namespace DAO
 
             KTXEntities KTXe = new KTXEntities();
             PHONG result = KTXe.PHONGs.SingleOrDefault(x => x.MaPhong == maP);
+            return result;
+
+        }
+
+        public IEnumerable<PHONG> TimP(PHONGDTO p)
+        {
+
+            KTXEntities KTXe = new KTXEntities();
+            IEnumerable<PHONG> result = KTXe.PHONGs.AsQueryable().Where(x =>
+            (p.MaPhong == null || x.MaPhong == p.MaPhong) &&
+            (p.TenP == null || x.TenP == p.TenP));
             return result;
 
         }

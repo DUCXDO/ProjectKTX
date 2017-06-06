@@ -17,7 +17,7 @@ namespace DAO
     }
 
 
-    class PhieuThuDAO : IPhieuThuDAO
+    public class PhieuThuDAO : IPhieuThuDAO
     {
         public PHIEUTHU ThemPT(PHIEUTHUDTO pt)
         {
